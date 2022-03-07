@@ -1,4 +1,4 @@
-package com.example.note
+package com.example.note.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.note.data.Note
 import com.example.note.databinding.NoteListBinding
 import com.example.note.ui.NoteViewModel
+import java.text.SimpleDateFormat
+import java.util.*
 
 class NoteAdapter(
     var notes: List<Note>,
@@ -13,7 +15,6 @@ class NoteAdapter(
 ) : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
     class NoteViewHolder(val binding: NoteListBinding) : RecyclerView.ViewHolder(binding.root)
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         return NoteViewHolder(
@@ -30,7 +31,9 @@ class NoteAdapter(
 
         holder.binding.txtDescription.text = notes[position].description
 
-        holder.binding.delete.setOnClickListener{
+        holder.binding.txtDate.text = notes[position].date
+
+        holder.binding.delete.setOnClickListener {
             viewModel.delete(notes[position])
         }
     }
@@ -38,4 +41,5 @@ class NoteAdapter(
     override fun getItemCount(): Int {
         return notes.size
     }
+
 }
