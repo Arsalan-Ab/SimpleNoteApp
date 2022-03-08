@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.note.data.Note
 import com.example.note.databinding.NoteListBinding
 import com.example.note.ui.NoteViewModel
-import java.text.SimpleDateFormat
 import java.util.*
 
 class NoteAdapter(

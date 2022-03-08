@@ -18,12 +18,13 @@ abstract class NoteDatabase : RoomDatabase() {
         val lock = Any()
 
         operator fun invoke(context: Context) = instanse ?: synchronized(lock) {
-            instanse?: createDatabase(context).also { it }
+            instanse ?: createDatabase(context).also { it }
         }
 
         private fun createDatabase(context: Context) =
             Room.databaseBuilder(
-                context, NoteDatabase::class.java, "Database"
+                context.applicationContext, NoteDatabase::class.java, "Database"
             ).build()
+
     }
 }
