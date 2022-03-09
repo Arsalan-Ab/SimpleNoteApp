@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.note.R
 import com.example.note.adapter.NoteAdapter
@@ -38,6 +39,11 @@ class MainListFragment : Fragment(R.layout.fragment_main_list) {
             adapter.notes = it
             adapter.notifyDataSetChanged()
         })
+
+        binding.fabAdd.setOnClickListener {
+            val action = MainListFragmentDirections.actionMainListFragmentToAddAndEditFragment()
+            findNavController().navigate(action)
+        }
     }
 
 }
