@@ -12,19 +12,4 @@ abstract class NoteDatabase : RoomDatabase() {
 
     abstract fun getNoteDao(): NoteDao
 
-    companion object {
-        @Volatile
-        private var instanse: NoteDatabase? = null
-        val lock = Any()
-
-        operator fun invoke(context: Context) = instanse ?: synchronized(lock) {
-            instanse ?: createDatabase(context).also { it }
-        }
-
-        private fun createDatabase(context: Context) =
-            Room.databaseBuilder(
-                context.applicationContext, NoteDatabase::class.java, "Database"
-            ).build()
-
-    }
 }

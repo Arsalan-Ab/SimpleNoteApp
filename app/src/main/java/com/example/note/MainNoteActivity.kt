@@ -3,9 +3,10 @@ package com.example.note
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.note.databinding.ActivityNoteBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 
-
+@AndroidEntryPoint
 class MainNoteActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityNoteBinding
