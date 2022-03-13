@@ -1,6 +1,7 @@
 package com.example.note.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.note.data.Note
@@ -10,10 +11,9 @@ import java.util.*
 
 class NoteAdapter(
     var notes: List<Note>,
-    private val viewModel: NoteViewModel
+    private val viewModel: NoteViewModel,
+    private val listener: onItemClickListener
 ) : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
-
-    class NoteViewHolder(val binding: NoteListBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         return NoteViewHolder(
@@ -39,6 +39,24 @@ class NoteAdapter(
 
     override fun getItemCount(): Int {
         return notes.size
+    }
+
+    inner class NoteViewHolder(val binding: NoteListBinding) :
+        RecyclerView.ViewHolder(binding.root),
+        View.OnClickListener {
+        init {
+            binding.root.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View?) {
+            if (adapterPosition != RecyclerView.NO_POSITION) {
+                listener.onItemClick(notes[adapterPosition])
+            }
+        }
+    }
+
+    interface onItemClickListener {
+        fun onItemClick(note: Note)
     }
 
 }

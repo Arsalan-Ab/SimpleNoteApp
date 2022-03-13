@@ -1,14 +1,11 @@
 package com.example.note.data
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface NoteDao {
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(note: Note)
 
     @Delete
@@ -16,5 +13,6 @@ interface NoteDao {
 
     @Query("SELECT * FROM note_table")
     fun getAllNote(): LiveData<List<Note>>
+
 
 }

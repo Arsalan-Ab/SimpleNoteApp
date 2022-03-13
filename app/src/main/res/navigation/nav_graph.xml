@@ -7,22 +7,51 @@
 
     <fragment
         android:id="@+id/mainListFragment"
-        android:name="com.example.note.fragments.MainListFragment"
+        android:name="com.example.note.ui.fragments.MainListFragment"
         android:label="fragment_main_list"
         tools:layout="@layout/fragment_main_list" >
         <action
             android:id="@+id/action_mainListFragment_to_addFragment"
             app:destination="@id/addFragment"
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/slide_out_right" />
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/mainListFragment" />
+        <action
+            android:id="@+id/action_mainListFragment_to_editFragment"
+            app:destination="@id/editFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/mainListFragment" />
     </fragment>
     <fragment
         android:id="@+id/addFragment"
-        android:name="com.example.note.fragments.AddFragment"
+        android:name="com.example.note.ui.fragments.AddFragment"
         android:label="fragment_add_and_edit"
-        tools:layout="@layout/fragment_add_and_edit" >
+        tools:layout="@layout/fragment_add" >
         <action
             android:id="@+id/action_addAndEditFragment_to_mainListFragment"
-            app:destination="@id/mainListFragment" />
+            app:destination="@id/mainListFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/mainListFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/editFragment"
+        android:name="com.example.note.ui.fragments.EditFragment"
+        android:label="fragment_edit"
+        tools:layout="@layout/fragment_edit" >
+        <action
+            android:id="@+id/action_editFragment_to_mainListFragment"
+            app:destination="@id/mainListFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
+        <argument
+            android:name="note"
+            app:argType="com.example.note.data.Note" />
     </fragment>
 </navigation>
