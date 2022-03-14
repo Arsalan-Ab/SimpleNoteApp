@@ -3,11 +3,13 @@ package com.example.note.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.note.data.Note
 import com.example.note.databinding.NoteListBinding
 import com.example.note.ui.NoteViewModel
 import java.util.*
+import kotlin.coroutines.coroutineContext
 
 class NoteAdapter(
     var notes: List<Note>,
