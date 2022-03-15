@@ -35,7 +35,7 @@ class EditFragment : Fragment(R.layout.fragment_edit) {
             val title = binding.edtPageTitle.text
             val description = binding.edtPageDescription.text
 
-            if (title.isEmpty() || description.isEmpty()) {
+            if (title.isBlank() || description.isBlank()) {
                 Toast.makeText(context, "please enter title and description", Toast.LENGTH_SHORT)
                     .show()
                 return@setOnClickListener
