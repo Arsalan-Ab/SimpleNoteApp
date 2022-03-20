@@ -40,10 +40,10 @@ class EditFragment : Fragment(R.layout.fragment_edit) {
                     .show()
                 return@setOnClickListener
             }
-            val date = SimpleDateFormat("dd/MM/yyyy HH:mm").format(Calendar.getInstance().time)
-            args.note.title = title.toString()
-            args.note.description = description.toString()
-            args.note.date = date
+
+            args.note.title = title.toString().trim()
+            args.note.description = description.toString().trim()
+            args.note.date = Calendar.getInstance().time
             viewModel.insert(args.note)
 
             Toast.makeText(context, "note edited", Toast.LENGTH_SHORT)

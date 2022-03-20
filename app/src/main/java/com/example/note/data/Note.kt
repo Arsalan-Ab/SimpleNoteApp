@@ -11,7 +11,7 @@ data class Note(
 
     var title: String,
     var description: String,
-    var date: String
+    var date: Date
 ) : Parcelable {
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null

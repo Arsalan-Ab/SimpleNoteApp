@@ -2,6 +2,7 @@ package com.example.note.di
 
 import android.app.Application
 import androidx.room.Room
+import com.example.note.converters.DateConverter
 import com.example.note.data.database.NoteDatabase
 import dagger.Module
 import dagger.Provides

@@ -3,13 +3,12 @@ package com.example.note.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.note.data.Note
 import com.example.note.databinding.NoteListBinding
 import com.example.note.ui.NoteViewModel
-import java.util.*
-import kotlin.coroutines.coroutineContext
+import java.text.SimpleDateFormat
+
 
 class NoteAdapter(
     var notes: List<Note>,
@@ -32,7 +31,8 @@ class NoteAdapter(
 
         holder.binding.txtDescription.text = notes[position].description
 
-        holder.binding.txtDate.text = notes[position].date
+        holder.binding.txtDate.text =
+            SimpleDateFormat("dd/MM/yyyy HH:mm").format(notes[position].date.time)
 
         holder.binding.delete.setOnClickListener {
             viewModel.delete(notes[position])
