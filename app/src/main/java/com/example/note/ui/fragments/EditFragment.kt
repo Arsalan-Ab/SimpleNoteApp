@@ -46,7 +46,7 @@ class EditFragment : Fragment(R.layout.fragment_edit) {
             args.note.date = Calendar.getInstance().time
             viewModel.insert(args.note)
 
-            Toast.makeText(context, "note edited", Toast.LENGTH_SHORT)
+            Toast.makeText(context, "Note Edited", Toast.LENGTH_SHORT).show()
 
             findNavController().navigate(R.id.action_editFragment_to_mainListFragment)
         }

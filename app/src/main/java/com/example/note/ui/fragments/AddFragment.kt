@@ -29,18 +29,18 @@ class AddFragment : Fragment(R.layout.fragment_add) {
             val title = binding.title.text.toString()
             val description = binding.Description.text.toString()
 
-            if (title.isEmpty() || description.isEmpty()) {
+            if (title.isBlank() || description.isBlank()) {
                 Toast.makeText(context, "please enter title and description", Toast.LENGTH_SHORT)
                     .show()
                 return@setOnClickListener
             }
-            val date = SimpleDateFormat("dd/MM/yyyy HH:mm").format(Calendar.getInstance().time)
-            val note = Note(title, description, date)
+
+            val note = Note(title.trim(), description.trim(), Calendar.getInstance().time)
             viewModel.insert(note)
 
-            Toast.makeText(context, "Note saved", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Note Saved", Toast.LENGTH_SHORT).show()
 
-            findNavController().navigate(R.id.action_addAndEditFragment_to_mainListFragment)
+            findNavController().navigate(R.id.action_editFragment_to_mainListFragment)
         }
 
     }

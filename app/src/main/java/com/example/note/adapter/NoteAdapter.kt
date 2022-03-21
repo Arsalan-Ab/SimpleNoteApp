@@ -1,5 +1,6 @@
 package com.example.note.adapter
 
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,6 +38,7 @@ class NoteAdapter(
         holder.binding.delete.setOnClickListener {
             viewModel.delete(notes[position])
         }
+
     }
 
     override fun getItemCount(): Int {
